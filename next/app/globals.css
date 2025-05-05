@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+}
+
+html, body {
+  @apply p-0 m-0 bg-white text-neutral-900 scroll-smooth font-sans;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+* {
+  @apply box-border;
+}
+
+img {
+  @apply block max-w-full h-auto;
+}
+
+button {
+  @apply cursor-pointer font-inherit;
+}
