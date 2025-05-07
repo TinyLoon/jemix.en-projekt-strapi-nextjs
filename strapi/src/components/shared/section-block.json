@@ -1,7 +1,10 @@
 {
-  "displayName": "Section Block",
-  "icon": "align-justify",
-  "category": "shared",
+  "collectionName": "components_shared_section_blocks",
+  "info": {
+    "displayName": "Section Block",
+    "icon": "align-justify",
+    "description": "Allgemeiner Block mit Bild, Titel, Text"
+  },
   "attributes": {
     "TopHeading": { "type": "string" },
     "BottomHeading": { "type": "string" },

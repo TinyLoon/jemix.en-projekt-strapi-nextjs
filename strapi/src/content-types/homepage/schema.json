@@ -26,12 +26,6 @@
       "repeatable": true,
       "component": "shared.service-item"
     },
-   "CTA": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.cta-section"
-    
-    },
     "testimonials": {
       "type": "component",
       "repeatable": true,

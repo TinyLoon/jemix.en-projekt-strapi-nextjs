@@ -1,7 +1,7 @@
 // src/hooks/useLandingPageMainContent.ts
 
 import useSWR from "swr";
-import { fetcher } from "@/../lib/fetcher"; // stellt sicher, dass alle API-Calls konsistent funktionieren
+import { fetcher } from "@/lib/fetcher"; // stellt sicher, dass alle API-Calls konsistent funktionieren
 
 export interface LandingPageMainContent {
   MainHeading: string;

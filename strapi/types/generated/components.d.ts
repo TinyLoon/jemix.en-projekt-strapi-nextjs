@@ -17,9 +17,9 @@ export interface SharedAboutUs extends Struct.ComponentSchema {
 export interface SharedCtaSection extends Struct.ComponentSchema {
   collectionName: 'components_shared_cta_sections';
   info: {
-    description: 'Call-to-Action mit Text und Button';
-    displayName: 'CallToAction';
-    icon: 'bullhorn';
+    description: 'Abschnitt mit Button und Aufruf';
+    displayName: 'Call-To-Action';
+    icon: 'cursor';
   };
   attributes: {
     buttonLink: Schema.Attribute.String;
@@ -83,6 +83,21 @@ export interface SharedNavigationLink extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSectionBlock extends Struct.ComponentSchema {
+  collectionName: 'components_shared_section_blocks';
+  info: {
+    description: 'Allgemeiner Block mit Bild, Titel, Text';
+    displayName: 'Section Block';
+    icon: 'align-justify';
+  };
+  attributes: {
+    BottomHeading: Schema.Attribute.String;
+    Description: Schema.Attribute.Text;
+    Image: Schema.Attribute.Media;
+    TopHeading: Schema.Attribute.String;
+  };
+}
+
 export interface SharedServiceItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_service_items';
   info: {
@@ -121,6 +136,7 @@ declare module '@strapi/strapi' {
       'shared.header': SharedHeader;
       'shared.hero-section': SharedHeroSection;
       'shared.navigation-link': SharedNavigationLink;
+      'shared.section-block': SharedSectionBlock;
       'shared.service-item': SharedServiceItem;
       'shared.testimonial': SharedTestimonial;
     }
