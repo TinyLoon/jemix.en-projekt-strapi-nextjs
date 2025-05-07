@@ -1,12 +1,13 @@
 "use client";
 
-import LanguageDrawer from "@/../components/Layout/LanguageDrawer";
-import { Hero } from "@/../components/LandingPage/Hero";
-import TopCards from "@/../components/LandingPage/TopCards";
-import MidSection from "@/../components/LandingPage/MidSection";
-import TestimonialsSlider from "@/../components/Slider/TestimonialsSlider";
-import { ContactForm } from "@/../components/Shared/ContactForm";
-import { Footer } from "@/../components/Shared/Footer";
+import { Hero } from "@/components/LandingPage/Hero";
+import TopCards from "@/components/LandingPage/TopCards";
+import MidSection from "@/components/LandingPage/MidSection";
+import TestimonialsSlider from "@/components/Slider/TestimonialsSlider";
+import { ContactForm } from "@/components/Shared/ContactForm";
+import { Footer } from "@/components/Shared/Footer";
+import { CallToAction } from "@/components/Shared/CallToAction";
+import LanguageDrawer from "@/components/Layout/LanguageDrawer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <TopCards />
       <MidSection />
+      <CallToAction />
       <TestimonialsSlider />
       <ContactForm />
       <Footer />

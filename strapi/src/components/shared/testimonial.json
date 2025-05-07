@@ -16,7 +16,8 @@
       "type": "text"
     },
     "photo": {
-      "type": "media"
+      "type": "media",
+      "multiple": false
     }
   }
 }

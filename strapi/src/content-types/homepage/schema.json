@@ -26,10 +26,11 @@
       "repeatable": true,
       "component": "shared.service-item"
     },
-    "callToAction": {
+   "CTA": {
       "type": "component",
       "repeatable": false,
       "component": "shared.cta-section"
+    
     },
     "testimonials": {
       "type": "component",
