@@ -1,0 +1,15 @@
+{
+  "displayName": "Section Block",
+  "icon": "align-justify",
+  "category": "shared",
+  "attributes": {
+    "TopHeading": { "type": "string" },
+    "BottomHeading": { "type": "string" },
+    "Description": { "type": "text" },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false
+    }
+  }
+}

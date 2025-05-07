@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_about_us",
+  "info": {
+    "displayName": "AboutUs",
+    "icon": "user",
+    "description": "Abschnitt \u00fcber das Unternehmen"
+  },
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

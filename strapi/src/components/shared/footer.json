@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_footers",
+  "info": {
+    "displayName": "Footer",
+    "icon": "footer",
+    "description": "Seitenfu\u00df mit Text, Kontakt und Links"
+  },
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.navigation-link"
+    }
+  }
+}

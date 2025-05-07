@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_cta_sections",
+  "info": {
+    "displayName": "CallToAction",
+    "icon": "bullhorn",
+    "description": "Call-to-Action mit Text und Button"
+  },
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    }
+  }
+}

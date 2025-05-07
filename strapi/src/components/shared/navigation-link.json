@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_navigation_links",
+  "info": {
+    "displayName": "NavigationLink",
+    "icon": "link",
+    "description": "Ein einzelner Navigationslink"
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

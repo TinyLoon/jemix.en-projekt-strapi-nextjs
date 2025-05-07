@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_service_items",
+  "info": {
+    "displayName": "ServiceItem",
+    "icon": "briefcase",
+    "description": "Einzelleistung mit Icon und Beschreibung"
+  },
+  "attributes": {
+    "icon": {
+      "type": "media"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

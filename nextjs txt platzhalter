@@ -1,0 +1,81 @@
+
+import { getServices } from '@/lib/api';
+
+export default async function Home() {
+  const services = await getServices();
+
+  return (
+    <main className="space-y-16">
+      {/* Hero Section */}
+      <section className="bg-gray-100 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold mb-4">Empower your digital presence in Mallorca</h1>
+          <p className="text-lg text-gray-600">Custom web development and IT solutions for your business.</p>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section className="max-w-5xl mx-auto px-6">
+        <h2 className="text-3xl font-bold mb-4">Who are we?</h2>
+        <p className="text-gray-700 text-lg">
+          We are a local IT agency providing custom solutions for businesses in Mallorca. With a focus on performance,
+          design and usability, we help bring your vision online.
+        </p>
+      </section>
+
+      {/* Services Section */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-10 text-center">Good News</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service: any) => (
+              <div key={service.id} className="border p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <img
+                  src={service.attributes.icon?.data?.attributes?.url || '/placeholder.svg'}
+                  alt={service.attributes.title}
+                  className="h-12 w-12 mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">{service.attributes.title}</h3>
+                <p className="text-gray-600">{service.attributes.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="bg-blue-600 text-white py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Interested?</h2>
+          <p className="mb-6 text-lg">Let’s build something great together. Contact us for a free consultation.</p>
+          <a href="/contact" className="inline-block bg-white text-blue-600 px-6 py-3 font-semibold rounded-md shadow">
+            Contact Us
+          </a>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 max-w-5xl mx-auto px-6">
+        <h2 className="text-3xl font-bold mb-10 text-center">What customers say about us</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Placeholder Testimonials - Replace with dynamic fetch */}
+          <div className="bg-white shadow p-6 rounded-xl">
+            <p className="text-gray-700 italic mb-4">“Great service and fast delivery.”</p>
+            <div className="font-bold">Maria G.</div>
+            <div className="text-sm text-gray-500">Hotel Manager</div>
+          </div>
+          <div className="bg-white shadow p-6 rounded-xl">
+            <p className="text-gray-700 italic mb-4">“Professional, reliable, and easy to work with.”</p>
+            <div className="font-bold">Daniel S.</div>
+            <div className="text-sm text-gray-500">Restaurant Owner</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-10 text-center">
+        <p>&copy; {new Date().getFullYear()} Mallorca IT Service. All rights reserved.</p>
+      </footer>
+    </main>
+  );
+}

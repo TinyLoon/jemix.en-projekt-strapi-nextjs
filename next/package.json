@@ -1,4 +1,3 @@
-
 {
   "name": "jemix-next-frontend",
   "version": "0.1.0",
@@ -19,7 +18,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
-    "@tanstack/react-query": "^5.74.11",
+    "@tanstack/react-query": "^5.75.5",
     "js-cookie": "^3.0.5",
     "next": "15.3.0",
     "next-sitemap": "^4.2.3",
@@ -35,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.5",
     "@types/js-cookie": "^3.0.6",
     "@types/negotiator": "^0.6.2",
     "@types/node": "20.17.30",
@@ -48,7 +47,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.5",
     "typescript": "5.8.3"
   }
 }

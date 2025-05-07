@@ -2,17 +2,20 @@
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import { useLandingPageMainContent } from "@/hooks/useLandingPageMainContent";
+import { useSectionBlocks } from "@/hooks/useSectionBlocks";
+import { useLanguageStore } from "@/store/useLanguageStore";
 
 export default function MidSection() {
-  const { data: serviceListData } = useLandingPageMainContent();
+  const { language } = useLanguageStore();
+  const { sectionBlocks } = useSectionBlocks(language);
 
-  if (!serviceListData) return null;
+  if (!sectionBlocks) return null;
 
   return (
     <div className="bg-white py-24">
-      {serviceListData.map((item, index) => {
+      {sectionBlocks.map((item, index) => {
         const isImageLeft = index % 2 === 0;
+        const imageUrl = item.Image?.data?.attributes?.url || "/fallback.jpg";
 
         return (
           <Container maxWidth="xl" key={item.id} className="mb-16">
@@ -24,8 +27,8 @@ export default function MidSection() {
                 className={isImageLeft ? "order-1" : "order-2"}
               >
                 <Image
-                  src={item.attributes.Image?.data?.attributes?.url || "/fallback.jpg"}
-                  alt={item.attributes.TopHeading}
+                  src={imageUrl}
+                  alt={item.TopHeading || "Image"}
                   width={800}
                   height={600}
                   className="w-full h-auto rounded-lg"
@@ -39,13 +42,13 @@ export default function MidSection() {
               >
                 <div className="space-y-4">
                   <Typography className="text-blue-600 font-semibold">
-                    {item.attributes.TopHeading}
+                    {item.TopHeading}
                   </Typography>
                   <Typography variant="h4" className="font-bold">
-                    {item.attributes.BottomHeading}
+                    {item.BottomHeading}
                   </Typography>
                   <Typography className="text-gray-700">
-                    {item.attributes.Description}
+                    {item.Description}
                   </Typography>
                 </div>
               </Grid>

@@ -1,0 +1,45 @@
+{
+  "collectionName": "homepage",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Single Type f\u00fcr Startseite"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "singular": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.hero-section"
+    },
+    "aboutUs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.about-us"
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.service-item"
+    },
+    "callToAction": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-section"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.testimonial"
+    },
+    "sectionBlocks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.section-block"
+    }
+  }
+}

@@ -10,6 +10,7 @@ export const Hero = () => {
   const { language } = useLanguageStore();
   const { heroContent: mainContent } = useHeroContent(language);
 
+  if (!mainContent) return null;
   const splitText = mainContent?.MainText?.split(" ") || [];
 
   return (
@@ -38,13 +39,13 @@ export const Hero = () => {
             </div>
           </Grid>
           <Grid item xs={12} lg={4}>
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="relative w-full h-64 md:h-96">
               <Image
                 src={heroImage}
                 alt="hero"
-                width={500}
-                height={300}
-                className="w-full h-auto object-contain"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain"
               />
             </div>
           </Grid>
