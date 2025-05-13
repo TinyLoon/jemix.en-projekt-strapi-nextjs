@@ -1,40 +1,34 @@
-
-import useSWR from "swr";
-import { fetcher } from "@/../lib/api/fetcher";
-import { useLanguageStore } from "@/../store/useLanguageStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetcher } from "@/lib/fetcher";
 
 interface FooterContent {
-  Title: string;
-  Description: string;
-  FollowUs: string;
-  FacebookLink: string;
-  InstagramLink: string;
-  LinkedInLink: string;
+  text?: string;
+  contactEmail?: string;
+  socialLinks: {
+    label: string;
+    url: string;
+  }[];
 }
 
-interface FooterApiResponse {
-  data?: {
-    id: number;
-    attributes: FooterContent;
-  };
-}
+export function useFooterContent(locale: string) {
+  const langParam =
+    locale === "Deutsch" ? "locale=de" :
+    locale === "Spanish" ? "locale=es" : "locale=en";
 
-export const useFooterContent = () => {
-  const { language } = useLanguageStore();
+  const query = [langParam, "populate[footer][populate]=*"].join("&");
 
-  const locale =
-    language === "Deutsch" ? "de" :
-    language === "Spanish" ? "es" :
-    "en";
-
-  const { data, error, isLoading } = useSWR<FooterApiResponse>(
-    `/footer-content?locale=${locale}`,
-    fetcher
-  );
+  const { data, isLoading, error } = useQuery<FooterContent>({
+    queryKey: ["footerContent", locale],
+    queryFn: async () => {
+      const res = await fetcher(`/homepage?${query}`);
+      return res.data.attributes.footer;
+    },
+    staleTime: 1000 * 60 * 10,
+  });
 
   return {
-    content: data?.data?.attributes ?? null,
+    footer: data,
     isLoading,
     isError: !!error,
   };
-};
+}

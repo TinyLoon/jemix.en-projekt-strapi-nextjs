@@ -1,7 +1,22 @@
+// next/types/types.ts
+
+export interface Testimonial {
+  id?: number;
+  name: string;
+  position?: string;
+  message: string;
+  photo?: {
+    data?: {
+      attributes: {
+        url: string;
+        alternativeText?: string;
+      };
+    };
+  };
+}
 
 export interface SliderCardContent {
   attributes: {
-    // passe an, was genau im JSON zurückkommt
     title: string;
     description: string;
   };
@@ -29,7 +44,7 @@ export interface PartnerBlockText {
 export interface ServiceListItem {
   attributes: {
     TopHeading: string;
-    // falls es weitere Felder gibt, ergänzen
+    // Ergänze hier ggf. weitere Felder wie BottomHeading, Description etc.
   };
 }
 

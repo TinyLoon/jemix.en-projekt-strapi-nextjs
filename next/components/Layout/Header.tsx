@@ -4,13 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import logo from "@/assets/logo.svg";
 import { useMenuStore } from "@/store/useMenuStore";
 import clsx from "clsx";
+import { useHeaderContent } from "@/hooks/useHeaderContent";
+import { useLanguageStore } from "@/store/useLanguageStore";
 
 export const Header = () => {
   const { isOpen, toggle, close } = useMenuStore();
+  const { language } = useLanguageStore();
   const pathname = usePathname();
+  const { header } = useHeaderContent(language);
 
   const isActive = (href: string) => pathname === href;
 
@@ -22,11 +25,13 @@ export const Header = () => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [close]);
 
+  const logoUrl = header?.logo?.data?.attributes?.url || "/logo.svg";
+
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center">
-          <Image src={logo} alt="jemix Logo" width={120} height={40} />
+          <Image src={logoUrl} alt="jemix Logo" width={120} height={40} />
         </Link>
 
         <button
@@ -64,20 +69,15 @@ export const Header = () => {
             }
           )}
         >
-          {[
-            { href: "/", label: "Start" },
-            { href: "/about", label: "Über uns" },
-            { href: "/services", label: "Leistungen" },
-            { href: "/contact", label: "Kontakt" },
-          ].map(({ href, label }) => (
+          {header?.navigationLinks?.map(({ label, url }) => (
             <Link
-              key={href}
-              href={href}
+              key={url}
+              href={url}
               onClick={close}
               className={clsx(
                 "block py-2 text-gray-800 hover:text-blue-600 transition-colors",
                 {
-                  "text-blue-600 font-semibold": isActive(href),
+                  "text-blue-600 font-semibold": isActive(url),
                 }
               )}
             >

@@ -3,19 +3,30 @@
   "info": {
     "displayName": "Footer",
     "icon": "footer",
-    "description": "Seitenfu\u00df mit Text, Kontakt und Links"
+    "description": "Seitenfuß mit Socials, Rechtslinks, Sprache, Logo, Text"
   },
   "attributes": {
-    "text": {
-      "type": "text"
+    "logo": {
+      "type": "media"
     },
-    "contactEmail": {
-      "type": "email"
+    "languageSwitch": {
+      "type": "boolean"
     },
     "socialLinks": {
       "type": "component",
       "repeatable": true,
       "component": "shared.navigation-link"
+    },
+    "legalLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.navigation-link"
+    },
+    "disclaimer": {
+      "type": "text"
+    },
+    "copyright": {
+      "type": "string"
     }
   }
 }

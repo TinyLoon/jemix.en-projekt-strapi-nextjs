@@ -32,14 +32,17 @@ export interface SharedCtaSection extends Struct.ComponentSchema {
 export interface SharedFooter extends Struct.ComponentSchema {
   collectionName: 'components_shared_footers';
   info: {
-    description: 'Seitenfu\u00DF mit Text, Kontakt und Links';
+    description: 'Seitenfu\u00DF mit Socials, Rechtslinks, Sprache, Logo, Text';
     displayName: 'Footer';
     icon: 'footer';
   };
   attributes: {
-    contactEmail: Schema.Attribute.Email;
+    copyright: Schema.Attribute.String;
+    disclaimer: Schema.Attribute.Text;
+    languageSwitch: Schema.Attribute.Boolean;
+    legalLinks: Schema.Attribute.Component<'shared.navigation-link', true>;
+    logo: Schema.Attribute.Media;
     socialLinks: Schema.Attribute.Component<'shared.navigation-link', true>;
-    text: Schema.Attribute.Text;
   };
 }
 
@@ -98,6 +101,20 @@ export interface SharedSectionBlock extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSeoMeta extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seo_metas';
+  info: {
+    description: 'Metadaten f\u00FCr Suchmaschinen & Social Media';
+    displayName: 'SEO Meta';
+    icon: 'search';
+  };
+  attributes: {
+    metaDescription: Schema.Attribute.Text;
+    metaImage: Schema.Attribute.Media;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedServiceItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_service_items';
   info: {
@@ -137,6 +154,7 @@ declare module '@strapi/strapi' {
       'shared.hero-section': SharedHeroSection;
       'shared.navigation-link': SharedNavigationLink;
       'shared.section-block': SharedSectionBlock;
+      'shared.seo-meta': SharedSeoMeta;
       'shared.service-item': SharedServiceItem;
       'shared.testimonial': SharedTestimonial;
     }

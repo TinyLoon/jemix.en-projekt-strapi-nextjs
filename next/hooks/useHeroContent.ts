@@ -1,4 +1,4 @@
-// src/hooks/useHeroContent.ts
+// next/hooks/useHeroContent.ts
 
 import { useQuery } from "@tanstack/react-query";
 import { useLanguageStore } from "@/store/useLanguageStore";
@@ -12,11 +12,11 @@ interface HeroContent {
   Button2?: string;
 }
 
-export function useHeroContent(languageFromProps: string) {  // Umbenennen des Funktionsparameters
-  const { language: currentLanguage } = useLanguageStore();  // Umbenennen des 'language'-Werts aus useLanguageStore
+export function useHeroContent(languageFromProps?: string) {
+  const { language: currentLanguage } = useLanguageStore();
 
   const getLocale = () => {
-    switch (currentLanguage) {  // Jetzt verwendest du 'currentLanguage' aus dem Store
+    switch (languageFromProps || currentLanguage) {
       case "Deutsch":
         return "de";
       case "Spanish":
@@ -31,10 +31,10 @@ export function useHeroContent(languageFromProps: string) {  // Umbenennen des F
   const { data, isLoading, error } = useQuery<HeroContent>({
     queryKey: ["heroContent", locale],
     queryFn: async () => {
-      const res = await fetcher(`/main-content?locale=${locale}`);
+      const res = await fetcher(`/main-content?locale=${locale}&populate=*`);
       return res.data?.attributes;
     },
-    staleTime: 1000 * 60 * 10, // 10 Minuten Cache
+    staleTime: 1000 * 60 * 10,
   });
 
   return {

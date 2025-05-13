@@ -20,26 +20,26 @@
     "paths": {
       "@/*": ["./*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
-    },
+    }
+  },
   "plugins": [
     {
       "name": "next"
     }
-  ]
-},
-"include": [
-  "app",
-  "components",
-  "hooks",
-  "lib",
-  "store",
-  "types",
-  "styles",
-  ".next/types/**/*.ts",
-  "next-env.d.ts",
-  "**/*.ts",
-  "**/*.tsx",
-  "lib/next-metadata.ts"
-],
-"exclude": ["node_modules"]
+  ],
+  "include": [
+    "app",
+    "components",
+    "hooks",
+    "lib",
+    "store",
+    "types",
+    "styles",
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/next-metadata.ts"
+  ],
+  "exclude": ["node_modules"]
 }

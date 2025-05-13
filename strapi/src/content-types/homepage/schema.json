@@ -4,7 +4,7 @@
     "singularName": "homepage",
     "pluralName": "homepages",
     "displayName": "Homepage",
-    "description": "Single Type f\u00fcr Startseite"
+    "description": "Single Type für Startseite"
   },
   "options": {
     "draftAndPublish": false,
@@ -35,6 +35,26 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.section-block"
+    },
+    "CTA": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-section"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.header"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.footer"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo-meta"
     }
   }
 }
