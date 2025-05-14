@@ -1,8 +1,7 @@
 module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT' || 10000),
-  url: env('RENDER_EXTERNAL_URL', ''),
+  host: '0.0.0.0',
+  port: env.int('PORT'),
   app: {
-    keys: env.array('APP_KEYS') || ['tobemodified1', 'tobemodified2'],
+    keys: env.array('APP_KEYS'),
   },
 });
