@@ -3,7 +3,7 @@
   "info": {
     "displayName": "AboutUs",
     "icon": "user",
-    "description": "Abschnitt \u00fcber das Unternehmen"
+    "description": "Abschnitt über das Unternehmen"
   },
   "attributes": {
     "headline": {
@@ -14,7 +14,11 @@
     },
     "image": {
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false
+    },
+    "alternativeText": {
+      "type": "string"
     }
   }
 }

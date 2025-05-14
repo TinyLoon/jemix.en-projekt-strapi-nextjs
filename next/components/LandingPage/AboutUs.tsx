@@ -1,35 +1,41 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguageStore } from "@/store/useLanguageStore";
+import { useAboutUsContent } from "@/hooks/useAboutUsContent";
+import { Container, Grid, Typography } from "@mui/material";
+import ReactMarkdown from "react-markdown";
 
-interface AboutUsProps {
-  title: string;
-  text: string;
-  image?: {
-    url: string;
-    alternativeText?: string;
-    width?: number;
-    height?: number;
-  };
-}
+export function AboutUs() {
+  const { language } = useLanguageStore();
+  const { aboutUs } = useAboutUsContent(language);
 
-export function AboutUs({ title, text, image }: AboutUsProps) {
+  if (!aboutUs) return null;
+
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-3xl font-bold mb-4">{title}</h2>
-          <p className="text-gray-700 leading-relaxed">{text}</p>
-        </div>
-        {image?.url && (
-          <div className="relative w-full h-80">
-            <Image
-              src={image.url}
-              alt={image.alternativeText || "About Us"}
-              fill
-              className="object-cover rounded-xl shadow-lg"
-            />
-          </div>
-        )}
-      </div>
+    <section className="bg-white py-20">
+      <Container maxWidth="lg">
+        <Grid container spacing={8} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <Typography variant="h4" className="font-bold mb-4">
+              {aboutUs.headline}
+            </Typography>
+            <ReactMarkdown className="prose">{aboutUs.content || ""}</ReactMarkdown>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            {aboutUs.image?.data?.attributes?.url && (
+              <div className="relative w-full h-64 md:h-96">
+                <Image
+                  src={aboutUs.image.data.attributes.url}
+                  alt={aboutUs.image.data.attributes.alternativeText || "About us image"}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
+            )}
+          </Grid>
+        </Grid>
+      </Container>
     </section>
   );
 }

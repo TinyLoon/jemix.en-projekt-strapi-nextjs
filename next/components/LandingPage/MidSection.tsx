@@ -1,21 +1,21 @@
 "use client";
 
-import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import { useSectionBlocks } from "@/hooks/useSectionBlocks";
+import { Container, Grid, Typography } from "@mui/material";
+import { useServiceItems } from "@/hooks/useServiceItems";
 import { useLanguageStore } from "@/store/useLanguageStore";
 
 export default function MidSection() {
   const { language } = useLanguageStore();
-  const { sectionBlocks } = useSectionBlocks(language);
+  const { serviceItems } = useServiceItems(language);
 
-  if (!sectionBlocks) return null;
+  if (!serviceItems) return null;
 
   return (
-    <div className="bg-white py-24">
-      {sectionBlocks.map((item, index) => {
+    <section className="bg-white py-24">
+      {serviceItems.map((item, index) => {
+        const data = item.attributes;
         const isImageLeft = index % 2 === 0;
-        const imageUrl = item.Image?.data?.attributes?.url || "/fallback.jpg";
 
         return (
           <Container maxWidth="xl" key={item.id} className="mb-16">
@@ -26,13 +26,15 @@ export default function MidSection() {
                 md={6}
                 className={isImageLeft ? "order-1" : "order-2"}
               >
-                <Image
-                  src={imageUrl}
-                  alt={item.TopHeading || "Image"}
-                  width={800}
-                  height={600}
-                  className="w-full h-auto rounded-lg"
-                />
+                {data.icon?.data?.attributes?.url && (
+                  <Image
+                    src={data.icon.data.attributes.url}
+                    alt={data.icon.data.attributes.alternativeText || "Service Icon"}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
+                )}
               </Grid>
               <Grid
                 item
@@ -41,14 +43,11 @@ export default function MidSection() {
                 className={isImageLeft ? "order-2" : "order-1"}
               >
                 <div className="space-y-4">
-                  <Typography className="text-blue-600 font-semibold">
-                    {item.TopHeading}
-                  </Typography>
-                  <Typography variant="h4" className="font-bold">
-                    {item.BottomHeading}
+                  <Typography variant="h5" className="font-bold text-blue-600">
+                    {data.title}
                   </Typography>
                   <Typography className="text-gray-700">
-                    {item.Description}
+                    {data.description}
                   </Typography>
                 </div>
               </Grid>
@@ -56,6 +55,6 @@ export default function MidSection() {
           </Container>
         );
       })}
-    </div>
+    </section>
   );
 }

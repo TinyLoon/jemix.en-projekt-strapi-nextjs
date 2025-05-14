@@ -8,6 +8,7 @@ export interface SharedAboutUs extends Struct.ComponentSchema {
     icon: 'user';
   };
   attributes: {
+    alternativeText: Schema.Attribute.String;
     content: Schema.Attribute.RichText;
     headline: Schema.Attribute.String;
     image: Schema.Attribute.Media;
