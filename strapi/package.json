@@ -14,7 +14,7 @@
     "repo:upstream": "git fetch upstream && git merge upstream/main",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build", 
+    "build": "strapi build"
   },
   "dependencies": {
     "@strapi/provider-upload-cloudinary": "^5.13.0",
