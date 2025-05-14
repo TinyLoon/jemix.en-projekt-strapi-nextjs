@@ -12,7 +12,9 @@
     "seed": "cd strapi && npx strapi import -f ./data/export_20250116105447.tar.gz --force",
     "export": "cd strapi && npx strapi export --no-encrypt -f ./data/export_20250116105447",
     "repo:upstream": "git fetch upstream && git merge upstream/main",
-    "develop": "strapi develop"
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build", 
   },
   "dependencies": {
     "@strapi/provider-upload-cloudinary": "^5.13.0",
