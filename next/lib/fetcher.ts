@@ -1,13 +1,19 @@
 export async function fetcher(url: string, init?: RequestInit) {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${url}`;
 
+  const headers = {
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+    "Content-Type": "application/json",
+    ...(init?.headers || {}),
+  };
+
   const res = await fetch(fullUrl, {
-    headers: {
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      "Content-Type": "application/json",
-    },
     ...init,
-    next: { revalidate: 60 }, // optional: ISR support
+    headers,
+    next: {
+      revalidate: 60, // ⏱ ISR: Revalidate alle 60 Sekunden
+      ...(init?.next || {}),
+    },
   });
 
   if (!res.ok) {
