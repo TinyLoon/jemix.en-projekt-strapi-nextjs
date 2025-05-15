@@ -3,8 +3,6 @@
 "use client";
 
 import React from "react";
-
-// Importiere hier die tatsächlichen Komponenten
 import { Hero } from "@/components/LandingPage/Hero";
 import MidSection from "@/components/LandingPage/MidSection";
 import TopCards from "@/components/LandingPage/TopCards";
@@ -18,6 +16,7 @@ interface DynamicComponent {
 
 interface Props {
   dynamicZone: DynamicComponent[];
+  locale?: string;
 }
 
 export default function DynamicZoneManager({ dynamicZone }: Props) {
