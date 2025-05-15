@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { submitContactForm } from "@/../lib/api/submitContactForm";
-import { useContactFormContent } from "@/../hooks/useContactFormContent";
+import { submitContactForm } from "@/lib/api/submitContactForm";
+import { useContactFormContent } from "@/hooks/useContactFormContent";
 
 const ContactSchema = z.object({
   name: z.string().min(2, "Name ist erforderlich"),
@@ -39,7 +39,7 @@ export const ContactForm = () => {
       await submitContactForm(data);
       setSuccess(true);
       reset();
-    } catch (err) {
+    } catch {
       setErrorMsg("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
     }
   };

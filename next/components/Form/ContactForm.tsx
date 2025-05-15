@@ -1,3 +1,4 @@
+// components/Shared/ContactForm.tsx
 "use client";
 
 import { useState } from "react";
@@ -33,19 +34,19 @@ export const ContactForm = () => {
   const { data: cms } = useContactFormContent();
 
   const onSubmit = async (data: ContactFormData) => {
-    setSuccess(false);
-    setErrorMsg("");
     try {
       await submitContactForm(data);
       setSuccess(true);
+      setErrorMsg("");
       reset();
-    } catch (err) {
+    } catch {
+      setSuccess(false);
       setErrorMsg("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
     }
   };
 
   return (
-    <section className="bg-gray-100 border-t border-b border-gray-300 py-16 px-4">
+    <section className="bg-gray-100 border-y border-gray-300 py-16 px-4">
       <h2 className="text-3xl text-center font-semibold mb-8">
         {cms?.title ?? "Kontakt aufnehmen"}
       </h2>
@@ -64,53 +65,42 @@ export const ContactForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                {cms?.placeholderName ?? "Name"}
-              </label>
-              <input
-                type="text"
-                {...register("name")}
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-              {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                {cms?.placeholderBusiness ?? "Firma"}
-              </label>
-              <input
-                type="text"
-                {...register("business")}
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-              {errors.business && <p className="text-sm text-red-600">{errors.business.message}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                {cms?.placeholderPhone ?? "Telefonnummer"}
-              </label>
-              <input
-                type="tel"
-                {...register("phoneNumber")}
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-              {errors.phoneNumber && <p className="text-sm text-red-600">{errors.phoneNumber.message}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                {cms?.placeholderEmail ?? "E-Mail"}
-              </label>
-              <input
-                type="email"
-                {...register("email")}
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-              {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
-            </div>
+            {[
+              {
+                label: cms?.placeholderName ?? "Name",
+                name: "name" as const,
+                type: "text",
+                error: errors.name?.message,
+              },
+              {
+                label: cms?.placeholderBusiness ?? "Firma",
+                name: "business" as const,
+                type: "text",
+                error: errors.business?.message,
+              },
+              {
+                label: cms?.placeholderPhone ?? "Telefonnummer",
+                name: "phoneNumber" as const,
+                type: "tel",
+                error: errors.phoneNumber?.message,
+              },
+              {
+                label: cms?.placeholderEmail ?? "E-Mail",
+                name: "email" as const,
+                type: "email",
+                error: errors.email?.message,
+              },
+            ].map(({ label, name, type, error }) => (
+              <div key={name}>
+                <label className="block text-sm font-medium mb-1">{label}</label>
+                <input
+                  type={type}
+                  {...register(name)}
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+                {error && <p className="text-sm text-red-600">{error}</p>}
+              </div>
+            ))}
           </div>
 
           <div>

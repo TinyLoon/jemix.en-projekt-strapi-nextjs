@@ -1,3 +1,4 @@
+// components/Layout/LanguageDrawer.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,16 +15,21 @@ import {
 import { useLanguageStore } from "@/hooks/useLanguageStore";
 import { Close } from "@mui/icons-material";
 
+const LANGUAGES = ["English", "Deutsch", "Spanish"] as const;
+
+type LanguageOption = (typeof LANGUAGES)[number];
+
 const LanguageDrawer = () => {
   const [open, setOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>("English");
 
-  const { language, setLanguage } = useLanguageStore();
+  const { setLanguage } = useLanguageStore();
 
   useEffect(() => {
-    const stored = localStorage.getItem("country") || Cookies.get("country");
+    const stored = (localStorage.getItem("country") ||
+      Cookies.get("country")) as LanguageOption | undefined;
 
-    if (stored) {
+    if (stored && LANGUAGES.includes(stored)) {
       setLanguage(stored);
       setSelectedLanguage(stored);
     } else {
@@ -32,7 +38,7 @@ const LanguageDrawer = () => {
   }, [setLanguage]);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    const newLang = event.target.value as string;
+    const newLang = event.target.value as LanguageOption;
     setSelectedLanguage(newLang);
   };
 
@@ -56,9 +62,11 @@ const LanguageDrawer = () => {
       >
         <Typography variant="h6">Choose your language</Typography>
         <Select value={selectedLanguage} onChange={handleChange}>
-          <MenuItem value="English">English</MenuItem>
-          <MenuItem value="Deutsch">Deutsch</MenuItem>
-          <MenuItem value="Spanish">Spanish</MenuItem>
+          {LANGUAGES.map((lang) => (
+            <MenuItem key={lang} value={lang}>
+              {lang}
+            </MenuItem>
+          ))}
         </Select>
         <Box display="flex" gap={2}>
           <Button onClick={handleContinue} variant="contained">
