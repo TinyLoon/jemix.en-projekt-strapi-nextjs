@@ -4,24 +4,23 @@
 
 import React from "react";
 
-// Beispiel-Komponenten – du kannst diese nach und nach erweitern oder austauschen
+// Importiere hier die tatsächlichen Komponenten
 import { Hero } from "@/components/LandingPage/Hero";
 import MidSection from "@/components/LandingPage/MidSection";
-import  TopCards  from "@/components/LandingPage/TopCards";
+import TopCards from "@/components/LandingPage/TopCards";
 import { CallToAction } from "@/components/Shared/CallToAction";
 import TestimonialsSlider from "@/components/Slider/TestimonialsSlider";
 
 interface DynamicComponent {
   __component: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface Props {
   dynamicZone: DynamicComponent[];
-  locale?: string;
 }
 
-export default function DynamicZoneManager({ dynamicZone, locale }: Props) {
+export default function DynamicZoneManager({ dynamicZone }: Props) {
   return (
     <>
       {dynamicZone.map((block, index) => {

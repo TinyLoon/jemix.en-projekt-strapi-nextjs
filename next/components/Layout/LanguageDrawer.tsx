@@ -18,7 +18,7 @@ const LanguageDrawer = () => {
   const [open, setOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
 
-  const { language, setLanguage } = useLanguageStore();
+  const { setLanguage } = useLanguageStore();
 
   useEffect(() => {
     const stored = localStorage.getItem("country") || Cookies.get("country");

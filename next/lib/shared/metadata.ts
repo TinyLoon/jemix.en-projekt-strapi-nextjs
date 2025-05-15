@@ -1,20 +1,40 @@
+// lib/shared/metadata.ts
 
-import { strapiImage } from '../../strapi/strapiImage';
+import type { Metadata } from "next";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
-export function generateMetadataObject(seo: any) {
+interface SEOData {
+  metaTitle?: string;
+  metaDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  metaImage?: {
+    url: string;
+  };
+  twitterCard?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+}
+
+export function generateMetadataObject(seo: SEOData = {}): Metadata {
   return {
-    title: seo?.metaTitle || 'Default Title', // Fallback to 'Default Title' if title is not provided
-    description: seo?.metaDescription || 'Default Description', // Fallback to 'Default Description'
+    title: seo.metaTitle ?? "Default Title",
+    description: seo.metaDescription ?? "Default Description",
     openGraph: {
-      title: seo?.ogTitle || seo?.metaTitle || 'Default OG Title',
-      description: seo?.ogDescription || seo?.metaDescription || 'Default OG Description',
-      images: seo?.metaImage ? [{ url: strapiImage(seo?.metaImage.url) }] : [],
+      title: seo.ogTitle ?? seo.metaTitle ?? "Default OG Title",
+      description: seo.ogDescription ?? seo.metaDescription ?? "Default OG Description",
+      images: seo.metaImage?.url
+        ? [{ url: strapiImage(seo.metaImage.url) }]
+        : [],
     },
     twitter: {
-      card: seo?.twitterCard || 'summary_large_image',
-      title: seo?.twitterTitle || seo?.metaTitle || 'Default Twitter Title',
-      description: seo?.twitterDescription || seo?.metaDescription || 'Default Twitter Description',
-      images: seo?.twitterImage ? [{ url: seo.twitterImage }] : [],
+      card: seo.twitterCard ?? "summary_large_image",
+      title: seo.twitterTitle ?? seo.metaTitle ?? "Default Twitter Title",
+      description: seo.twitterDescription ?? seo.metaDescription ?? "Default Twitter Description",
+      images: seo.twitterImage
+        ? [{ url: seo.twitterImage }]
+        : [],
     },
-  }
+  };
 }
