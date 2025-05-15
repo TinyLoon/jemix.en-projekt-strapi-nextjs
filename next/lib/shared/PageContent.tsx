@@ -1,6 +1,6 @@
 // lib/shared/PageContent.tsx
 
-// import { AmbientColor } from "@/components/decorations/ambient-color";
+import { AmbientColor } from "@/components/decorations/ambient-color";
 import DynamicZoneManager from "@/components/dynamic-zone/manager";
 
 interface DynamicComponent {
