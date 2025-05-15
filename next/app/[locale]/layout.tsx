@@ -1,6 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SlugProvider } from "@/context/SlugContext"; // ✅ Kontext importieren
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   },
   description: "JEMIX bietet IT-Lösungen, Netzwerke, WLAN, Support und Beratung auf Mallorca.",
   keywords: ["IT", "Mallorca", "WLAN", "Support", "Netzwerk", "IT-Lösungen", "JEMIX"],
-  metadataBase: new URL("https://jemix.es"), // 🔁 deine Domain
+  metadataBase: new URL("https://jemix.es"),
   openGraph: {
     title: "JEMIX - IT Solutions & Services",
     description: "Moderne IT-Infrastruktur & Beratung für Unternehmen, Praxen & Private.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png", // Muss vorhanden sein im public Ordner!
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "JEMIX Hero Image",
@@ -49,7 +50,9 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <SlugProvider> {/* ✅ Kontext für alle Komponenten verfügbar */}
+          {children}
+        </SlugProvider>
       </body>
     </html>
   );

@@ -1,21 +1,21 @@
-
 "use client";
 
 import { useEffect } from "react";
-import { useSlugContext } from "@/../context/SlugContext";
+import { useSlugContext } from "@/context/SlugContext"; // ✅ relativer Import, korrekt
 
-export default function ClientSlugHandler({
-  localizedSlugs,
-}: {
+interface Props {
   localizedSlugs: Record<string, string>;
-}) {
+}
+
+export default function ClientSlugHandler({ localizedSlugs }: Props) {
   const { dispatch } = useSlugContext();
 
   useEffect(() => {
-    if (localizedSlugs) {
-      dispatch({ type: "SET_SLUGS", payload: localizedSlugs });
-    }
-  }, [localizedSlugs, dispatch]);
+    dispatch({
+      type: "SET_SLUGS",
+      payload: localizedSlugs,
+    });
+  }, [dispatch, localizedSlugs]);
 
-  return null; // This component only handles the state and doesn't render anything.
+  return null;
 }
