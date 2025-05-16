@@ -1,6 +1,6 @@
 // hooks/useTopCardsContent.ts
 
-import useSWR from "swr"; // ✅ default import korrigiert
+import { useSWR } from "swr"; // ✅ default import korrigiert
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { fetcher } from "@/lib/fetcher";
 
