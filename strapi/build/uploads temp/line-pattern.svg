@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 876 782" width="876" height="782">
+	<title>Vector-svg</title>
+	<defs>
+		<image width="879" height="779" id="img1" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODc5IiBoZWlnaHQ9Ijc3OSIgdmlld0JveD0iMCAwIDg3OSA3NzkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0tODIuNDIxMiA3Ni43NDM3Qy04Mi40MjEyIDc2Ljc0MzcgLTkuMjg3NDggLTIwLjA1ODYgMjA4LjYxNyA1LjM2ODgxQzM1Mi42OTMgMjIuMTgxIDM0OS4wMDUgNjcuMjg3MiA2MDkuNzggMTcuMjU1MkM4MzIuOTI2IC0yNS41NTM0IDkxMC43NzkgMTg4LjM0MyA4NjQuMDU0IDI2Ny42MzdDODE3LjMyMiAzNDYuOTMxIDc2NS41NDIgMzQ4LjcxMyA4MjguODM5IDQ4Ni4yOEM4NzIuODk0IDU4Mi4wMTMgNjQ0LjY5MiA2NzEuNDg5IDUyNC4zOTMgNjUyLjczQzM1My43MSA2MjYuMTE2IDYwLjE4MzcgODA3Ljc2OCAtMTIwLjMzNSA3NzIuNzcxTC04Mi40MjEyIDc2Ljc0MzdaIiBzdHJva2U9InVybCgjcGFpbnQwX2xpbmVhcl8zMDVfMzM2KSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8zMDVfMzM2IiB4MT0iMzUwLjM2OSIgeTE9Ii00MS4zNjMyIiB4Mj0iNDc2LjEzMiIgeTI9IjcyNS45NzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY5ODQ1MSIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KPHN0b3Agb2Zmc2V0PSIwLjM4IiBzdG9wLWNvbG9yPSIjQTU5QjVEIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgo8c3RvcCBvZmZzZXQ9IjAuODEiIHN0b3AtY29sb3I9IiNFNUIzNjkiIHN0b3Atb3BhY2l0eT0iMC45MiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkJENkYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K"/>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(125.763,767.335,-1111.228,182.126,341.369,-30.439)">
+			<stop offset="0" stop-color="#698451" stop-opacity=".5"/>
+			<stop offset=".38" stop-color="#a59b5d" stop-opacity=".7"/>
+			<stop offset=".81" stop-color="#e5b369" stop-opacity=".92"/>
+			<stop offset="1" stop-color="#ffbd6f" stop-opacity="1"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: url(#g1);stroke-miterlimit:10;stroke-width: 2 } 
+	</style>
+	<use id="Vector-1" href="#img1" transform="matrix(1,0,0,1,-3,0)"/>
+	<path id="Layer" fill-rule="evenodd" class="s0" d="m-91.4 87.7c0 0 73.1-96.8 291-71.4 144.1 16.8 140.4 61.9 401.2 11.9 223.1-42.8 301 171.1 254.3 250.4-46.8 79.3-98.6 81-35.3 218.6 44.1 95.7-184.1 185.2-304.4 166.5-170.7-26.7-464.2 155-644.7 120z"/>
+</svg>
