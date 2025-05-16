@@ -1,19 +1,28 @@
-// 📁 components/context/SlugProviderWrapper.tsx
+"use client";
 
-import { SlugProvider } from "@/components/context/SlugContext";
-import ClientSlugProvider from "./ClientSlugProvider";
+import { useEffect } from "react";
+import { SlugProvider, useSlugContext } from "../context/SlugContext";
 
 interface Props {
-  children: React.ReactNode;
   slugs: Record<string, string>;
+  children: React.ReactNode;
 }
 
-export default function SlugProviderWrapper({ children, slugs }: Props) {
+function SetSlugs({ slugs }: { slugs: Record<string, string> }) {
+  const { dispatch } = useSlugContext();
+
+  useEffect(() => {
+    dispatch({ type: "SET_SLUGS", payload: slugs });
+  }, [slugs, dispatch]);
+
+  return null;
+}
+
+export default function SlugProviderWrapper({ slugs, children }: Props) {
   return (
     <SlugProvider>
-      <ClientSlugProvider slugs={slugs}>
-        {children}
-      </ClientSlugProvider>
+      <SetSlugs slugs={slugs} />
+      {children}
     </SlugProvider>
   );
 }

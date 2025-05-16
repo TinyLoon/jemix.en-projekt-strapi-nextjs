@@ -1,9 +1,7 @@
-// 📁 components/context/ClientSlugProvider.tsx
-
 "use client";
 
 import { useEffect } from "react";
-import { useSlugContext } from "@/components/context/SlugContext";
+import { SlugProvider, useSlugContext } from "@/context/SlugContext";
 
 interface Props {
   slugs: Record<string, string>;
@@ -11,11 +9,20 @@ interface Props {
 }
 
 export default function ClientSlugProvider({ slugs, children }: Props) {
+  return (
+    <SlugProvider>
+      <SlugSetter slugs={slugs} />
+      {children}
+    </SlugProvider>
+  );
+}
+
+function SlugSetter({ slugs }: { slugs: Record<string, string> }) {
   const { dispatch } = useSlugContext();
 
   useEffect(() => {
     dispatch({ type: "SET_SLUGS", payload: slugs });
   }, [dispatch, slugs]);
 
-  return <>{children}</>;
+  return null;
 }

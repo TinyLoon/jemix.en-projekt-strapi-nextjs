@@ -48,7 +48,7 @@ export async function generateMetadata({
     true
   );
 
-  return generateMetadataObject(pageData?.seo);
+  return generateMetadataObject(pageData?.seo ?? {});
 }
 
 export default async function SlugPage({
