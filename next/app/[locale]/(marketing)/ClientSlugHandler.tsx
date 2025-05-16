@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSlugContext } from "@/context/SlugContext";
+import { useSlugContext } from "@/components/context/SlugContext";
 
 interface Props {
   localizedSlugs?: Record<string, string>;

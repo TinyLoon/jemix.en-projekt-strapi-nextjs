@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PageContent from "@/lib/shared/PageContent";
 import fetchContentType from "@/lib/strapi/fetchContentType";
 import { generateMetadataObject } from "@/lib/shared/metadata";
-import ClientSlugHandler from "../ClientSlugHandler";
+import SlugProviderWrapper from "@/components/context/SlugProviderWrapper";
 
 interface SEOData {
   metaTitle?: string;
@@ -27,6 +27,7 @@ interface PageData {
   seo?: SEOData;
   localizations?: {
     locale: string;
+    slug: string;
   }[];
 }
 
@@ -62,23 +63,22 @@ export default async function SlugPage({
         slug: params.slug,
         locale: params.locale,
       },
-      populate: "dynamic_zone",
+      populate: "*",
     },
     true
   );
 
   const localizedSlugs = pageData.localizations?.reduce(
-    (acc: Record<string, string>, localization) => {
-      acc[localization.locale] = "";
+    (acc: Record<string, string>, loc) => {
+      acc[loc.locale] = loc.slug;
       return acc;
     },
-    { [params.locale]: "" }
+    { [params.locale]: params.slug }
   );
 
   return (
-    <>
-      <ClientSlugHandler localizedSlugs={localizedSlugs} />
+    <SlugProviderWrapper slugs={localizedSlugs}>
       <PageContent pageData={pageData} />
-    </>
+    </SlugProviderWrapper>
   );
 }
