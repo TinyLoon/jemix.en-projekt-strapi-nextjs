@@ -1,3 +1,4 @@
+// strapi/config/plugins.js
 module.exports = ({ env }) => ({
   upload: {
     config: {
