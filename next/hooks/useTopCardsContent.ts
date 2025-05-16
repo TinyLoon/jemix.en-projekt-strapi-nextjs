@@ -1,6 +1,6 @@
 // hooks/useTopCardsContent.ts
 
-import  useSWR  from "swr"; // ✅ default import korrigiert
+import useSWR from "swr"; // ✅ default import korrekt für SWR v2
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { fetcher } from "@/lib/fetcher";
 
@@ -35,14 +35,19 @@ export const useTopCardsContent = () => {
   const locale =
     language === "Deutsch" ? "de" : language === "Spanish" ? "es" : "en";
 
-  const { data, error, isLoading } = useSWR<ApiResponse>(
+  const { data, error, isLoading, isValidating } = useSWR<ApiResponse>(
     `/top-cards?locale=${locale}`,
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false, // optional: unterdrückt Neuladen beim Tabwechsel
+      keepPreviousData: true,   // optional: zeigt alte Daten bis neue kommen
+    }
   );
 
   return {
     data: data?.data ?? [],
     isLoading,
-    error,
+    isValidating,
+    isError: !!error,
   };
 };
